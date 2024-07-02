@@ -5,15 +5,14 @@ from functions.functions import cluster_similar_descriptions, determine_canonica
 #%% ################################################# Lectura de datos ##################################################################################
 
 # Abre el archivo en modo binario para detectar su encoding
-with open('../datasets/input/Online_Retail.csv', 'rb') as file:
+with open('./datasets/input/Online_Retail.csv', 'rb') as file:
     raw_data = file.read()
     result = chardet.detect(raw_data)
     encoding = result['encoding']
     print(f"El encoding detectado es: {encoding}")
 
 # Lectura del dataset 
-df_online_retail = pd.read_csv('../data/Online_Retail.csv', encoding=encoding)
-df_online_retail.head()
+df_online_retail = pd.read_csv('./datasets/input/Online_Retail.csv', encoding='ISO-8859-1')
 #%% ################################################# Limpieza de datos ###########################################################################################
 
 # Pasar el nombre de las columnas a mínusculas y dejarlo en snake_case
@@ -60,4 +59,4 @@ replacement_dict = determine_canonical_form(clusters, df_online_retail_cleaned['
 # Reemplazar las frases en el DataFrame
 df_online_retail_cleaned['normalized_description'] = df_online_retail_cleaned['normalized_description'].replace(replacement_dict)
 #%% Convertir el dataframe a CSV
-df_online_retail_cleaned.to_csv('../datasests/intermediate/df_online_retail_cleaned.csv', index=False)
+df_online_retail_cleaned.to_csv('./datasets/intermediate/df_online_retail_cleaned.csv', index=False)
