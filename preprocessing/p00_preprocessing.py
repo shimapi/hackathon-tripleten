@@ -1,11 +1,11 @@
 #%% ################################################# Importar librerias ################################################################################
 import chardet
 import pandas as pd
-from funcitons import cluster_similar_descriptions, determine_canonical_form, normalize_descriptions # Funciones locales
+from functions.functions import cluster_similar_descriptions, determine_canonical_form, normalize_descriptions # Funciones locales
 #%% ################################################# Lectura de datos ##################################################################################
 
 # Abre el archivo en modo binario para detectar su encoding
-with open('../data/Online_Retail.csv', 'rb') as file:
+with open('../datasets/input/Online_Retail.csv', 'rb') as file:
     raw_data = file.read()
     result = chardet.detect(raw_data)
     encoding = result['encoding']
@@ -60,4 +60,4 @@ replacement_dict = determine_canonical_form(clusters, df_online_retail_cleaned['
 # Reemplazar las frases en el DataFrame
 df_online_retail_cleaned['normalized_description'] = df_online_retail_cleaned['normalized_description'].replace(replacement_dict)
 #%% Convertir el dataframe a CSV
-df_online_retail_cleaned.to_csv('df_online_retail_cleaned.csv', index=False)
+df_online_retail_cleaned.to_csv('../datasests/intermediate/df_online_retail_cleaned.csv', index=False)
