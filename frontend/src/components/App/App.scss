@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+$font-lato: "Lato", sans-serif;
+
+* {
+	background-color: rgb(36, 34, 34);
+	color: rgb(222, 222, 222);
+}
+body {
+	font-family: $font-lato;
+	font-weight: 400;
+}
+#root {
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+	position: relative;
+	justify-content: center;
+	letter-spacing: 1pt;
+	word-spacing: 2px;
+	line-height: 1.5;
+}
+.container {
+	color: rgb(222, 222, 222);
+	display: flex;
+	flex-direction: column;
+	padding: 0 48px;
+	min-width: 400px;
+}
