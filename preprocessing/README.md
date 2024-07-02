@@ -1,8 +1,8 @@
 # Preprocessing
 
-## Descripción
+## p00_preprocessing.py
 
-**p00_preprocessing.py** 
+**Descripción** 
 Este script de Python realiza el proceso de limpieza de datos para un dataset de ventas en línea (Online_Retail.csv). A continuación, se detallan los pasos realizados y cómo usar el script.
 
 Pasos Realizados
@@ -32,7 +32,7 @@ Se detecta automáticamente el encoding del archivo CSV y se lee el dataset (Onl
 4. Conversión a CSV
 El DataFrame limpiado y procesado se guarda como df_online_retail_cleaned.csv sin incluir el índice. Contiene las columnas con la descripción original como la descripción limpia. Para que en analisis posteriores si es necesario comparar, se realice de forma mas simple.
 
-Uso del Script
+**Uso del Script**
 1) Asegúrate de tener instaladas las librerías necesarias mencionadas en requirements.txt.
 
 2) Ejecuta el script clean_data.py. Asegúrate de ajustar las rutas de los archivos según sea necesario.
