@@ -2,7 +2,7 @@
 
 ## p00_preprocessing.py
 
-**Descripción** 
+**Descripción**   
 Este script de Python realiza el proceso de limpieza de datos para un dataset de ventas en línea (Online_Retail.csv). A continuación, se detallan los pasos realizados y cómo usar el script.
 
 Pasos Realizados
