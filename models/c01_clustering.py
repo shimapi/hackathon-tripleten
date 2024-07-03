@@ -30,5 +30,5 @@ rfm['cluster'] = kmeans.labels_
 rfm_kmeans = order_cluster('cluster', 'monetary', rfm, ascending=True)
 
 # Guardar el dataset como csv
-rfm_kmeans.to_csv('./datasets/intermediate/rfm_kmeans.csv', index=False)
+rfm_kmeans.to_csv('./datasets/output/rfm_kmeans.csv', index=False)
 
