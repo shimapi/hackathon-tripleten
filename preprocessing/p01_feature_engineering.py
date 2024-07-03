@@ -2,7 +2,7 @@
 import pandas as pd
 
 #%% ################################################# Leer CSV limpio ################################################################################
-df_online_retail_cleaned = pd.read_csv('./datasets/intermediate/df_online_retail_cleaned.csv')
+df_online_retail_cleaned = pd.read_csv('../datasets/intermediate/df_online_retail_cleaned.csv')
 #%% ################################################# Preparar el dataset ################################################################################
 
 # Convertir los datos a datetime
@@ -10,6 +10,8 @@ df_online_retail_cleaned['invoice_date'] = pd.to_datetime(df_online_retail_clean
 
 # Eliminar la columna de descripción original
 df_online_retail_cleaned.drop(columns=['description'], axis=1, inplace=True)
+# Eliminar la columna con la fecha
+df_online_retail_cleaned.drop()
 #%% ################################################# Crear columnas a partir de fechas ################################################################################
 # Crear columnas día, mes y año a partir de la fecha
 df_online_retail_cleaned['day'] = df_online_retail_cleaned.invoice_date.dt.day
@@ -35,4 +37,4 @@ df_online_retail_cleaned = df_online_retail_cleaned.merge(invoices_per_customer,
 df_online_retail_cleaned['avg_sales_per_customer'] = df_online_retail_cleaned['sales_per_customer'] / df_online_retail_cleaned['invoices_per_customer']
 
 #%% Convertir el dataframe a CSV
-df_online_retail_cleaned.to_csv('./datasets/intermediate/df_online_retail_feat_eng.csv', index=False)
+df_online_retail_cleaned.to_csv('../datasets/intermediate/df_online_retail_feat_eng.csv', index=False)
