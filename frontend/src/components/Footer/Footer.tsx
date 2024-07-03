@@ -6,7 +6,6 @@ const Footer = () => {
 			Hackathon TripleTen
 			<h3 className="title">Integrantes</h3>
 			<ul>
-				</li>
 				<li>
 					<a href="github">Shirley Mallea - Web Developer</a>
 				</li>
