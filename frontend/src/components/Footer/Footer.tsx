@@ -15,6 +15,27 @@ const Footer = () => {
 				<li>
 					<a href="github">Esteban - Data Science</a>
 				</li>
+				<li>
+					<a href="github">Shirley Mallea - Web Developer</a>
+				</li>
+				<li>
+					<a href="github">Adriana - Data Science</a>
+				</li>
+				<li>
+					<a href="github">Esteban - Data Science</a>
+				</li>
+				<li>
+					<a href="github">Ayrton - Data Analysis</a>
+				</li>
+				<li>
+					<a href="github">Yair - Data Analysis</a>
+				</li>
+				<li>
+					<a href="github">Lorena - Wed Developer</a>
+				</li>
+				<li>
+					<a href="github">Luis - Data Analyst</a>
+				</li>
 
 				{/*         Si gen1) Shimi - Web developer
 2) Adriana - Data science
