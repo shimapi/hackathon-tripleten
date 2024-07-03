@@ -1,33 +1,55 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import "./FileForm.scss";
-// import { useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
-
-// Si necesitas definir parámetros para useParams, puedes hacerlo aquí.
-// Por ejemplo, si esperas un parámetro "id" en la ruta, puedes definirlo así:
-// interface RouteParams {
-//   id: string;
-// }
 
 const FileForm: React.FC = () => {
-	// Aquí es donde usarías los hooks, si necesitas acceder a las props del router.
-	// const history = useHistory();
-	// const location = useLocation();
-	// const params = useParams<RouteParams>();
-	// const match = useRouteMatch();
+	const handleFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
+		const file = event.target.files?.[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = function (e: ProgressEvent<FileReader>) {
+				if (e.target && typeof e.target.result === "string") {
+					const data = JSON.parse(e.target.result);
+					renderChart(data);
+				}
+			};
+			reader.readAsText(file);
+		}
+	};
+
+	const handleButtonClick = () => {
+		const fileInput = document.getElementById("fileInput") as HTMLInputElement;
+		const event = new Event("change", { bubbles: true });
+		fileInput.dispatchEvent(event);
+	};
 
 	return (
 		<div className="file">
-			<form
-				action="/upload"
-				method="post"
-				encType="multipart/form-data"
-				className="file__form"
-			>
-				<input type="file" name="file" />
-				<button type="submit">Subir</button>
-			</form>
+			<section id="upload-section" className="file__form">
+				<h2>Cargar Datos</h2>
+				<input
+					type="file"
+					id="fileInput"
+					accept=".json"
+					onChange={handleFileUpload}
+				/>
+				<button id="loadDataButton" onClick={handleButtonClick}>
+					Cargar Datos
+				</button>
+			</section>
 		</div>
 	);
+};
+
+// Define the type for your data if you know the structure
+interface ChartData {
+	// Add your data structure here
+	[key: string]: string;
+}
+
+const renderChart = (data: ChartData) => {
+	// Aquí iría tu lógica para renderizar el gráfico con los datos proporcionados
+	console.log(data);
+	// Ejemplo: Si estás utilizando Chart.js o D3.js, agregarías tu lógica aquí
 };
 
 export default FileForm;
