@@ -21,9 +21,15 @@ body {
 	line-height: 1.5;
 }
 .container {
-	color: rgb(222, 222, 222);
+	color: grey;
 	display: flex;
 	flex-direction: column;
 	padding: 0 48px;
 	min-width: 400px;
+}
+
+button {
+	padding: 10px 20px;
+	margin: 10px;
+	font-weight: 700;
 }

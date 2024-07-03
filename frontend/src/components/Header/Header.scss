@@ -1,0 +1,19 @@
+.menubar {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+
+	&__link {
+		text-decoration: none;
+		color: white;
+		font-size: 1.5rem;
+		font-weight: 700;
+		padding: 10px;
+
+		&:hover {
+			color: grey;
+			text-decoration: underline;
+		}
+	}
+}
