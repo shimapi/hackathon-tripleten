@@ -24,7 +24,7 @@ const FileForm: React.FC = () => {
 				className="file__form"
 			>
 				<input type="file" name="file" />
-				<button type="submit">Upload</button>
+				<button type="submit">Subir</button>
 			</form>
 		</div>
 	);
