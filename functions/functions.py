@@ -10,6 +10,9 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
 
+# importaciones para manejo de datos
+import pandas as pd
+
 # Descargar recursos de nltk necesarios
 nltk.download('wordnet')
 nltk.download('omw-1.4')
@@ -36,7 +39,6 @@ def normalize_descriptions(descriptions):
         normalized_descriptions.append(' '.join(lemmatized_words))
     return normalized_descriptions
 
-# Función para encontrar posibles errores de tipeo y agruparlas en clusters
 def cluster_similar_descriptions(descriptions, threshold=90):
     ''' 
     Agrupa descripciones similares en clusters basados en la similitud de texto.
@@ -69,7 +71,6 @@ def cluster_similar_descriptions(descriptions, threshold=90):
         clusters[desc].extend(cluster)
     return clusters
 
-# Determinar la versión canónica para cada cluster (la más frecuente)
 def determine_canonical_form(clusters, descriptions):
     ''' 
     Determina la forma canónica para cada cluster de descripciones.
@@ -93,3 +94,24 @@ def determine_canonical_form(clusters, descriptions):
         for item in cluster:
             replacement_dict[item] = canonical_form
     return replacement_dict
+
+def fill_missing_descriptions(row, mapping_dict):
+    """
+    Complementa las descripciones faltantes basadas en el código de stock.
+
+    Esta función toma una fila de un DataFrame y un diccionario de mapeo de códigos de stock a descripciones.
+    Si la descripción de la fila es NaN, la función busca en el diccionario el código de stock de la fila
+    y devuelve la descripción correspondiente. Si la descripción no es NaN, la función devuelve la descripción
+    original.
+
+    Args:
+    row (pd.Series): Una fila del DataFrame que contiene las columnas 'stock_code' y 'description'.
+    mapping_dict (dict): Un diccionario donde las claves son códigos de stock y los valores son descripciones.
+
+    Returns:
+    str: La descripción original si no es NaN, o la descripción mapeada a partir del código de stock si la
+    descripción original es NaN.
+    """
+    if pd.isna(row['description']):
+        return mapping_dict.get(row['stock_code'], row['description'])
+    return row['description']
