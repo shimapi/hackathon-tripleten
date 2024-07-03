@@ -115,3 +115,28 @@ def fill_missing_descriptions(row, mapping_dict):
     if pd.isna(row['description']):
         return mapping_dict.get(row['stock_code'], row['description'])
     return row['description']
+
+def order_cluster(cluster_field_name, target_field_name, df, ascending): 
+    """
+    Reordena los clusters en un DataFrame basándose en la media de un campo objetivo.
+    
+    Parámetros:
+    cluster_field_name (str): El nombre del campo que contiene los clusters.
+    target_field_name (str): El nombre del campo objetivo según el cual se ordenarán los clusters.
+    df (DataFrame): El DataFrame que contiene los datos a ser reordenados.
+    ascending (bool): Indica si el orden debe ser ascendente (True) o descendente (False).
+
+    Retorna:
+    DataFrame: Un DataFrame con los clusters reordenados según la media del campo objetivo.
+    
+    Ejemplo de uso:
+    df_ordenado = order_cluster('Cluster', 'AnnualIncome', df, ascending=True)
+    """
+    new_cluster_field_name = 'new_' + cluster_field_name 
+    df_new = df.groupby(cluster_field_name)[target_field_name].mean().reset_index() 
+    df_new = df_new.sort_values(by=target_field_name,ascending=ascending).reset_index(drop=True) 
+    df_new['index'] = df_new.index 
+    df_final = pd.merge(df,df_new[[cluster_field_name,'index']], on=cluster_field_name) 
+    df_final = df_final.drop([cluster_field_name],axis=1) 
+    df_final = df_final.rename(columns={"index":cluster_field_name}) 
+    return df_final 
