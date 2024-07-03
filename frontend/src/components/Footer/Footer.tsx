@@ -6,14 +6,6 @@ const Footer = () => {
 			Hackathon TripleTen
 			<h3 className="title">Integrantes</h3>
 			<ul>
-				<li>
-					<a href="github">Shirley Mallea - Web Developer</a>
-				</li>
-				<li>
-					<a href="github">Adriana - Data Science</a>
-				</li>
-				<li>
-					<a href="github">Esteban - Data Science</a>
 				</li>
 				<li>
 					<a href="github">Shirley Mallea - Web Developer</a>
