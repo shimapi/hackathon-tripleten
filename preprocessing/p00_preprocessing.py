@@ -1,18 +1,17 @@
 #%% ################################################# Importar librerias ################################################################################
 import chardet
 import pandas as pd
-from functions.functions import cluster_similar_descriptions, determine_canonical_form, normalize_descriptions # Funciones locales
+from functions.functions import cluster_similar_descriptions, determine_canonical_form, fill_missing_descriptions, normalize_descriptions # Funciones locales
 #%% ################################################# Lectura de datos ##################################################################################
 
 # Abre el archivo en modo binario para detectar su encoding
-with open('./datasets/input/Online_Retail.csv', 'rb') as file:
+with open('../datasets/input/Online_Retail.csv', 'rb') as file:
     raw_data = file.read()
     result = chardet.detect(raw_data)
     encoding = result['encoding']
-    print(f"El encoding detectado es: {encoding}")
 
 # Lectura del dataset 
-df_online_retail = pd.read_csv('./datasets/input/Online_Retail.csv', encoding='ISO-8859-1')
+df_online_retail = pd.read_csv('../datasets/input/Online_Retail.csv', encoding=encoding)
 #%% ################################################# Limpieza de datos ###########################################################################################
 
 # Pasar el nombre de las columnas a mínusculas y dejarlo en snake_case
@@ -20,6 +19,13 @@ df_online_retail.columns = df_online_retail.columns.str.lower()
 
 ################################################# Tratamiento de valores ausentes ##################################################################################
 df_online_retail_cleaned = df_online_retail.copy()
+# Se recuperaran algunos valores ausentes de description usando el stock_code
+# Crear el diccionario de mapeo de stock_code a description
+mapping_dict = df_online_retail.dropna(subset=['description']).drop_duplicates(subset=['stock_code']).set_index('stock_code')['description'].to_dict()
+
+# Aplicar la función para rellenar las descripciones faltantes
+df_online_retail['description'] = df_online_retail.apply(fill_missing_descriptions, axis=1, args=(mapping_dict,))
+
 df_online_retail_cleaned = df_online_retail_cleaned.dropna(subset=['description'])   # Para la columna descripcion se elimininaran al ser solo el 0.2% de los datos. 
 df_online_retail_cleaned = df_online_retail_cleaned.fillna('unknown')                # Para la columna customer_id se reemplazaran por la palabra unknown
 
