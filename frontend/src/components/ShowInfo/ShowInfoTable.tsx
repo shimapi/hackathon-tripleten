@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ShowInfoTable = ({ filename }: { filename: string }) => {
-	const [data, setData] = useState([]);
+	interface DataItem {
+		[key: string]: React.ReactNode;
+	}
+
+	const [data, setData] = useState<DataItem[]>([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch(`/json/${filename}`);
+				const response = await fetch(`/src/json/${filename}`);
 				if (!response.ok) {
 					throw new Error("Network response was not ok");
 				}
