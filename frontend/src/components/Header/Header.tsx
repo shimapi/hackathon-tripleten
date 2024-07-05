@@ -10,6 +10,9 @@ const Header: React.FC = () => {
 				<Link className="menubar__link" to="/">
 					Home
 				</Link>
+				<Link className="menubar__link" to="/show-info">
+					Mostrar Información
+				</Link>
 				<Link className="menubar__link" to="/upload-json">
 					Subir JSON
 				</Link>

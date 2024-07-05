@@ -3,6 +3,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Graph from "../Graph/Graph";
 import FileForm from "../FileForm/FileForm";
+import ShowInfo from "../ShowInfo/ShowInfo";
 import "./App.scss";
 import { Route, Routes } from "react-router-dom";
 import ApiConnect from "../../api/ApiConnect";
@@ -18,6 +19,7 @@ const App = () => {
 					<Route path="/upload-json" element={<FileForm />} />
 					<Route path="/upload-csv" element={<FileCsv />} />
 					<Route path="/graph" element={<Graph />} />
+					<Route path="/show-info" element={<ShowInfo />} />
 				</Routes>
 				<ApiConnect />
 			</div>
