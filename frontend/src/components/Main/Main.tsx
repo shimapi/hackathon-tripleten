@@ -1,9 +1,12 @@
+import FileCsv from "../FileForm/FileCsv";
 import "./Main.scss";
 
 const Main = () => {
-  return (
-    <div>Main</div>
-  )
-}
+	return (
+		<>
+			<FileCsv />
+		</>
+	);
+};
 
-export default Main
+export default Main;
