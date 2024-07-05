@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-import pandas as pd
 import os
+from .scripts.preprocessing import process_csv
 
-# Asegúrate de que la carpeta de cargas exista
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -20,12 +19,8 @@ def upload_file(request):
             for chunk in file.chunks():
                 destination.write(chunk)
         
-        # Leer el archivo CSV con pandas
-        df = pd.read_csv(filepath)
-        
-        # Procesar el DataFrame (aquí puedes añadir tu lógica de procesamiento)
-        # Por ejemplo, convertir el DataFrame a JSON y enviarlo de vuelta al cliente
-        data = df.head().to_dict()
+        # Llama al script personalizado para procesar el CSV
+        data = process_csv(filepath)
         
         return JsonResponse(data)
     return JsonResponse({'error': 'Invalid request'}, status=400)
