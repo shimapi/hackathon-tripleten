@@ -9,7 +9,7 @@ const Header: React.FC = () => {
 				Home
 			</Link>
 			<Link className="menubar__link" to="/upload">
-				Subir CSV
+				Subir JSON
 			</Link>
 			<Link className="menubar__link" to="/graph">
 				Ver Gráfico

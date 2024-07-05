@@ -5,6 +5,7 @@ import Graph from "../Graph/Graph";
 import FileForm from "../FileForm/FileForm";
 import "./App.scss";
 import { Route, Routes } from "react-router-dom";
+import ApiConnect from "../../api/ApiConnect";
 
 const App = () => {
 	return (
@@ -16,6 +17,8 @@ const App = () => {
 				<Route path="/graph" element={<Graph />} />
 			</Routes>
 			<Footer />
+			<ApiConnect />{" "}
+			{/* arreglar, esto no es un componente, es la conexion a la apiiii */}
 		</div>
 	);
 };
