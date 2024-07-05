@@ -43,10 +43,17 @@ button:hover {
 canvas {
   max-width: 100%;
 }
-/* .footer {
-    box-sizing: border-box;
-    background-color: #1f1f1f;
-    color: #ffffff;
-    background-size: cover;
-    padding: 60px 80px;
-} */
+.footer {
+  box-sizing: border-box;
+  background-color: #1f1f1f;
+  color: #ffffff;
+  background-size: cover;
+  padding: 60px 80px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  flex: revert;
+  display: flex;
+  flex-direction: column;
+}
