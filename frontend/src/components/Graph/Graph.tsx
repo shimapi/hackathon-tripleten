@@ -55,7 +55,7 @@ const options = {
 const Graph = () => {
 	return (
 		<div>
-			<h1>Chart.js con React JS</h1>
+			<h2>Chart.js con React JS</h2>
 			<Bar data={data} options={options} />
 		</div>
 	);

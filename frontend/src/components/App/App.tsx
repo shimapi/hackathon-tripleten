@@ -6,20 +6,23 @@ import FileForm from "../FileForm/FileForm";
 import "./App.scss";
 import { Route, Routes } from "react-router-dom";
 import ApiConnect from "../../api/ApiConnect";
+import FileCsv from "../FileForm/FileCsv";
 
 const App = () => {
 	return (
-		<div className="container">
+		<>
 			<Header />
-			<Routes>
-				<Route path="/" element={<Main />} />
-				<Route path="/upload" element={<FileForm />} />
-				<Route path="/graph" element={<Graph />} />
-			</Routes>
+			<div className="container">
+				<Routes>
+					<Route path="/" element={<Main />} />
+					<Route path="/upload-json" element={<FileForm />} />
+					<Route path="/upload-csv" element={<FileCsv />} />
+					<Route path="/graph" element={<Graph />} />
+				</Routes>
+				<ApiConnect />
+			</div>
 			<Footer />
-			<ApiConnect />{" "}
-			{/* arreglar, esto no es un componente, es la conexion a la apiiii */}
-		</div>
+		</>
 	);
 };
 

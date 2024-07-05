@@ -25,7 +25,7 @@ const ApiConnect = () => {
 
 	return (
 		<div>
-			<h1>Api Connect</h1>
+			<h3>Api Connect</h3>
 			<ul>
 				{data.map((item) => (
 					<li key={item.id}>{item.title}</li>

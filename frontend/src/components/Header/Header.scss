@@ -1,6 +1,16 @@
+.header {
+	color: white;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	text-align: center;
+}
+h1 {
+	font-size: 2rem;
+	background-color: brown;
+}
 .menubar {
 	display: flex;
-	width: 100%;
 	justify-content: space-between;
 	align-items: center;
 
