@@ -1,7 +1,11 @@
 .footer {
-    box-sizing: border-box;
-    background-color: #1f1f1f;
-    color: #ffffff;
-    background-size: cover;
-    padding: 60px 80px;
+	box-sizing: border-box;
+	background-color: #1f1f1f;
+	color: #ffffff;
+	background-size: cover;
+	padding: 60px 80px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	align-items: center;
 }
