@@ -4,4 +4,11 @@
     color: #ffffff;
     background-size: cover;
     padding: 60px 80px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    flex: revert;
+    display: flex;
+    flex-direction: column;
 }
